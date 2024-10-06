@@ -4,18 +4,58 @@ import pandas as pd
 df = pd.read_csv('iris.csv')
 
 # Inspect the DataFrame
-print(df.head())  # Display the first few rows
-print(df.info())  # Get information about data types and missing values
+# print(df.head())  # Display the first few rows
+# print(df.info())  # Get information about data types and missing values
 
-# Check for missing values
-print(df.isnull().sum())
+df['petal.width'] = pd.to_numeric(df['petal.width'], errors='coerce')
+df['sepal.width'] = pd.to_numeric(df['sepal.width'], errors='coerce')
+# print(df[df['petal.width'].isnull()])
+
+# Optionally, fill NaN values with a specific value (like the mean or mode of the column)
+df['petal.width'] = df['petal.width'].fillna(df['petal.width'].mean())
+df['sepal.width'] = df['sepal.width'].fillna(df['sepal.width'].mean())
 
 
+df['date'] = pd.to_datetime(df['date'], format='%m/%d/%y')
 
+df['petal.width'] = df['petal.width'].round(0).astype(int)
+
+# df['combined_sum'] = df['sepal.width'] + df['petal.length'] + df['petal.width']
 df.dropna(inplace=True)
 
-# Explore data types
-print(df)
+
+missingval = df.isnull().sum()
+# print(missingval)
+
+df['sepal.length'] = df['sepal.length'].round(2)
+df['sepal.width'] = df['sepal.width'].round(2)
+df['petal.width'] = df['petal.width'].round(2)
+
+# Renaming the column
+df.rename(columns={'sepal.length': 'sepal_length'}, inplace=True)
+df.rename(columns={'sepal.width': 'sepal_width'}, inplace=True)
+df.rename(columns={'petal.length': 'petal_length'}, inplace=True)
+df.rename(columns={'petal.width': 'petal_width'}, inplace=True)
+# print(df.dtypes)
+print(df.isnull().sum())
+
+# df.to_csv('output.csv', index=False)
+
+cleaneddf = df
+
+print(cleaneddf)
+
+# sepal.length
+# sepal.width 
+# petal.length
+# variety
+# # Check for missing values
+# print(df.isnull().sum())
+
+
+
+# # Explore data types
+# print(df)
 
 # import pandas as pd
 # import numpy as np
@@ -40,3 +80,4 @@ print(df)
 # Q3 = df['column_name'].quantile(0.75)
 # IQR = Q3 - Q1
 # df = df[(df['column_name'] >= Q1 - 1.5 * IQR) & (df['column_name'] <= Q3 + 1.5 * IQR)]
+
