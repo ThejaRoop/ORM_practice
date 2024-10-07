@@ -1,0 +1,72 @@
+#
+One-to-One Relationship
+
+#insert values in to tables
+INSERT INTO Users (name) VALUES ('John Doe');
+INSERT INTO Profiles (bio, user_id) VALUES ('Software Engineer', 1);
+
+#
+One-to-One Relationship
+--if you try inserting same user to a different profile it will throw error
+SELECT Users.name, Profiles.bio
+FROM Users
+JOIN Profiles ON Users.id = Profiles.user_id;
+----------
+
+ One-to-Many Relationship
+
+INSERT INTO Authors (name) VALUES ('George Orwell');
+INSERT INTO Books (title, author_id) VALUES ('1984', 1), ('Animal Farm', 1);
+
+SELECT Authors.name, Books.title
+FROM Authors
+JOIN Books ON Authors.id = Books.author_id;
+
+----------
+
+Many-to-Many Relationship
+SELECT Students.name, Courses.course_name
+FROM Enrollments
+JOIN Students ON Enrollments.student_id = Students.id
+JOIN Courses ON Enrollments.course_id = Courses.id;
+
+
+
+
+
+
+INSERT INTO parent_table (parentname, age, date_of_birth, is_employed, address)
+VALUES 
+('John Doe', 40, '1984-05-12', TRUE, '123 Maple St.'),
+('Jane Smith', 35, '1989-02-20', FALSE, '456 Oak St.'),
+('Robert Brown', 45, '1979-07-15', TRUE, '789 Pine Ave.');
+
+INSERT INTO child_table (first_name, grade, birth_date, is_enrolled, parent_id)
+VALUES
+('Emily', 4, '2016-03-10', TRUE, 1),  -- child of parent with id 1 (John Doe)
+('Michael', 6, '2014-07-22', TRUE, 1), -- child of parent with id 1 (John Doe)
+('Sophia', 2, '2019-08-30', TRUE, 2),  -- child of parent with id 2 (Jane Smith)
+('James', 5, '2015-09-14', TRUE, 3);   -- child of parent with id 3 (Robert Brown)
+
+
+SELECT p.parentname, c.first_name, c.grade
+FROM parent_table p
+JOIN child_table c ON p.id = c.parent_id;
+
+Select * from child_table;
+
+Select * from parent_table;
+
+INSERT INTO parent_table (parentname, age, date_of_birth, is_employed, address)
+VALUES 
+('Parent 1', 40, '1984-05-15', TRUE, '123 Main St'),
+('Parent 2', 38, '1986-07-20', FALSE, '456 Elm St');
+
+INSERT INTO child_table (first_name, grade, birth_date, is_enrolled, parent_id)
+VALUES 
+('Child A', 5, '2018-04-01', TRUE, 1);  -- Assuming 1 is the ID of Parent 1
+
+---in below step same child being assigned to a different parent
+INSERT INTO child_table (first_name, grade, birth_date, is_enrolled, parent_id)
+VALUES 
+('Child A', 5, '2018-04-01', TRUE, 2);  -- Attempting to assign Child A to Parent 2

@@ -1,0 +1,103 @@
+postgres
+port 5432
+pw- roop
+
+
+
+mkdir proj
+cd newproj
+pip install pipenv
+pipenv install SQLAlchemy pandas psycopg2 numpy 
+pip install python-dotenv
+
+
+check env with
+python
+import sys
+sys.executable
+
+pipenv shell
+
+run a test.py with
+python test.py
+------------
+python -m venv proj_env
+proj_env\Scripts\activate.bat
+pip list
+
+pip install pydub
+
+export- in requirments.txt
+pip freeze
+
+deactivate
+rm dir proj_env /s
+
+to install newly
+pip install -r requirments.txt
+---------
+
+
+pip list > 2:13
+python -m venv project_env > 2:29
+proj_env\Scripts\activate.bat > 3:24
+where python > 3:46
+pip install requests > 4:48
+pip install pytz > 5:00
+pip list > 
+pip freeze > 5:47
+ --> copy information 'pip freeze'
+ --> create requirements.txt > 6:37
+ --> paste information there
+deactivate > 7:16
+rmdir project_env /s > 7:33
+
+>> NEW PROJECT <<
+
+mkdir my_project > 8:48
+python -m venv my_project\venv > 8:55
+my_project\venv\Scripts\activate.bat
+pip install -r requirements.txt > 9:46
+cd my_project > 10:50
+ --> create new file 'script.py'
+deactivate > 
+rmdir venv /s >
+python -m venv venv --system-site-packages > 13:30
+venv\Scripts\activate.bat > 
+pip list >
+pip install SQLAlchemy
+pip list --local
+-------
+ORM Class Creation
+Create ORM classes based on the provided Postgres ERD using SQLAlchemy.
+Data Loading into PostgreSQL using ORM
+Create the database schema in PostgreSQL using SQLAlchemy.
+Import data from a CSV into a Pandas DataFrame.
+Perform necessary data transformations.
+Insert the transformed data into the PostgreSQL database using SQLAlchemy ORM.
+
+------
+GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;
+CREATE USER myuser WITH PASSWORD 'mypassword';
+CREATE DATABASE mydb;
+
+or just user = postgres and pw as roop
+
+
+----
+create a database schema in PostgreSQL 
+	- define your models as classes
+	-
+
+--
+Data Validation and Type Safety:
+roll back transactions using the session.
+optimization options like eager loading or batch inserts
+
+
+with example create ORM classes, with proper primary and foreign
+key, int,string,datatime, etc. having varieties of mapping
+One-to-One, One-to-Many, Many-to-Many for four tables
+with contain diffrent varieties of data types
+
+
