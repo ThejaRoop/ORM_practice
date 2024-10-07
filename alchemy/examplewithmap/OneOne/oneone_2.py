@@ -24,7 +24,8 @@ class Profile(Base):
     user_id = Column(Integer, ForeignKey('users.id'), unique=True)  # Ensure One-to-One
     
     # Back reference to User
-    user = relationship("User", back_populates="profile")
+    user = relationship("User", back_populates="profile", single_parent=True)
+#single_parent=True is optional, conveys child can associate with only one parent
 
 # # Setting up the engine and session
 engine = create_engine('postgresql://postgres:roop@localhost/mydb2')#, echo=True)  # You can use Postgres here instead of SQLite

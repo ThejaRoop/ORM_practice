@@ -7,7 +7,7 @@ df = pd.read_csv('iris.csv')
 # print(df.head())  # Display the first few rows
 # print(df.info())  # Get information about data types and missing values
 
-df['petal.width'] = pd.to_numeric(df['petal.width'], errors='coerce')
+df['petal.width'] = pd.to_numeric(df['petal.width'], errors='coerce').fillna(df['petal.width'].mean())
 df['sepal.width'] = pd.to_numeric(df['sepal.width'], errors='coerce')
 # print(df[df['petal.width'].isnull()])
 
